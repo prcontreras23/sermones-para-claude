@@ -6,3 +6,4 @@
 - **vault**: ninguno
 - **logos**: no
 - **version_biblica**: RVR60
+- **voz**: sin definir

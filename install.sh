@@ -64,6 +64,7 @@ else
 - **vault**: $VAULT
 - **logos**: $TIENE_LOGOS
 - **version_biblica**: RVR60
+- **voz**: sin definir
 CFGEOF
   ok "configuración creada"
 fi

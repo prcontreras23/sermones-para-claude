@@ -85,6 +85,7 @@ Antes de empezar, lee `~/.claude/skills/sermon-generator/configuracion.md`. Trae
 - **vault**: nombre del vault de Obsidian, o `ninguno`. Si es `ninguno`, ignora todo lo que dice «vault de Obsidian» más abajo (Paso 2.5 y las fichas de predicación) y guarda los archivos `.md` directamente con Write en `carpeta_sermones`. Los comandos `obsidian vault="[vault]" ...` de este documento son la forma de la CLI de Obsidian; si la CLI no está instalada, escribe el mismo contenido como archivo.
 - **logos**: `si` o `no`. Si es `no`, salta el Paso 2.4 y arma la Entrega 1 con la fuente que elija el usuario (internet, documentos propios o NotebookLM), marcando cada dato con su origen.
 - **version_biblica**: versión por defecto para los enlaces de Logos (si está vacía, pregunta).
+- **voz**: cómo suena la persona al predicar (`sin definir` o su configuración). Ver Paso 0.1 y `references/voces.md`.
 
 Si el archivo no existe, pregunta esos datos en una sola pantalla, créalo y sigue.
 
@@ -106,6 +107,15 @@ Si el archivo no existe, pregunta esos datos en una sola pantalla, créalo y sig
 Si el usuario no responde explícitamente pero el contexto ya lo deja claro (ej. dice "necesito algo para el culto de oración de esta noche" o "es para la semana de evangelismo"), puedes inferir el estilo correspondiente y confirmarlo en una frase corta antes de continuar — pero si hay cualquier ambigüedad, pregunta. Si el usuario no expresa preferencia y tampoco hay contexto que sugiera otra cosa, usa **Expositivo** por defecto, que es el que este documento describe en detalle más abajo.
 
 **En cuanto el estilo quede definido (distinto al Expositivo), lee `references/estilos-sermon.md`** antes de generar cualquier entrega — ese archivo describe exactamente qué cambia en la estructura, duración y tono de cada entrega para ese estilo. El Expositivo no requiere leer ese archivo: su estructura completa está en el cuerpo de este documento.
+
+### Paso 0.1: Voz del predicador
+
+Lee `- **voz**:` en `configuracion.md`.
+
+- Si dice `sin definir`: antes de seguir, abre `references/voces.md`, ofrece las voces ya armadas (A. Black Church declarativa con coro · B. Pastoral conversacional · C. Expositivo sobrio) **o** configurar la suya con el cuestionario de ese archivo. Guarda lo que elija en `configuracion.md` y no se lo vuelvas a preguntar.
+- Si ya tiene una voz: aplícala sin preguntar. Si el usuario dice «cambia mi voz», repite el proceso.
+
+La voz gobierna el tono, el ritmo, la apertura, el coro, las indicaciones de guion y el cierre. La estructura sigue dependiendo del estilo del Paso 0.
 
 ### Paso 0.5: Banco de Prompts de Referencia
 
@@ -409,7 +419,7 @@ Generado **solo después de que el usuario confirme que leyó la Entrega 1**. Es
 |---|---|
 | **Una verdad central** | Todo el sermón gira en torno a una sola verdad bíblica principal |
 | **Puntos** | 3 puntos extraídos directamente de la narrativa del pasaje |
-| **Estilo** | Expositivo, frase por frase; tono que honra la tradición de predicación afroamericana y caribeña cuando aplique: rítmico, emocional, declarativo, llamada y respuesta |
+| **Estilo y voz** | Expositivo, frase por frase; el tono, el ritmo y los recursos orales son los de la voz configurada (Paso 0.1) |
 | **Duración** | 25-30 minutos (~3,500 palabras) |
 | **Audiencia** | Adaptar al trasfondo cultural especificado (congregación mixta, afroamericana, caribeña, hispana, etc.) |
 | **Pasajes adicionales** | Integrar todos los textos que el usuario haya indicado |
@@ -420,7 +430,7 @@ Generado **solo después de que el usuario confirme que leyó la Entrega 1**. Es
 
 - **Una verdad bíblica**: El sermón no es una lista de tres ideas separadas. Los tres puntos son tres ventanas que miran la misma verdad desde ángulos distintos. El oyente debe irse con una sola cosa grabada en el corazón.
 - **Textura expositiva**: El sermón recorre el pasaje versículo por versículo, o escena por escena. No se alejes del texto para predicar sobre él — predica desde dentro de él.
-- **Tono declarativo y encarnado**: Habla con autoridad espiritual, no con timidez académica. El predicador sabe lo que el texto dice y lo proclama. Usa el presente histórico para traer las escenas a la vida.
+- **Tono**: el de la voz configurada (Paso 0.1). Sea cual sea, el predicador habla con autoridad espiritual y sabe lo que el texto dice; no con timidez académica ni como quien da una conferencia. Usa el presente histórico para traer las escenas a la vida.
 - **Horizonte adventista orgánico**: La teología adventista debe sentirse en el tono y la esperanza, no en el formato. No "insertes" doctrinas — deja que el texto las revele.
 - **Ilustraciones**: Usa ilustraciones que aclaren conceptos y conecten con la vida real. Pueden ser cotidianas, históricas o culturalmente relevantes para la audiencia.
 - **Nunca prediques como quien da conferencia**: Predica como quien comparte algo que le cambió la vida.
@@ -502,7 +512,7 @@ La conclusión no es un resumen — es el momento más importante del sermón. E
 - **Frase de cierre impactante**: una verdad que el oyente no pueda olvidar, anclada en el texto o en un versículo bíblico memorable.
 - **Versículo de cierre**: la última palabra es de la Escritura.
 
-> **Formato**: Texto plano y predicable, listo para leer en voz alta. Sin bullet points en el cuerpo del sermón. Prosa corrida, oraciones con peso, ritmo que invite a la proclamación.
+> **Formato**: Texto plano y predicable, listo para leer en voz alta. Sin bullet points en el cuerpo del sermón. Prosa corrida, con el ritmo de la voz configurada (Paso 0.1).
 > Al final escribe: *"✓ Sermón listo. ¿Generamos la Tarjeta del Predicador?"*
 
 ---
@@ -935,7 +945,7 @@ Antes de entregar cada parte, verifica:
 - **Declarativo y encarnado**: Habla con autoridad espiritual. El predicador sabe lo que el texto dice y lo proclama con convicción.
 - **Historias**: Para abrir, ilustrar y cerrar. Identificables para la audiencia, siempre subordinadas al punto bíblico.
 - **Transiciones**: "Vimos que Dios... Ahora, ¿qué significa eso para ti?"
-- **Llamada y respuesta**: En sermones para congregaciones afroamericanas y caribeñas, escribe frases que inviten a la respuesta de la congregación. El predicador no habla solo — predica con el pueblo.
+- **Llamada y respuesta**: Solo si la voz configurada lo incluye o la congregación lo practica, escribe frases que inviten a la respuesta de la congregación. El predicador no habla solo — predica con el pueblo.
 - **Elena White**: Introducida como: "Elena White describe esto así..." — nunca como si su autoridad igualara a la de la Escritura.
 - **El evangelio siempre**: Si el sermón puede predicarse sin Cristo, no es un sermón bíblico completo.
 
